@@ -1,0 +1,44 @@
+// CommonLayouts.kt
+@Composable
+fun Header(content: @Composable () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.Green)
+            .padding(horizontal = 8.dp)
+    ) {
+        content();
+    }
+}
+
+@Composable
+fun Footer(color: Color, message: String) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(color)
+            .padding(horizontal = 8.dp)
+    ) {
+        Box(contentAlignment = Alignment.Center) {
+            Text(text = message)
+        }
+    }
+}
+
+/* ------------------------X---------------------------- */
+
+// MainActivity.kt
+class MainActivity: AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentLayout {
+            Header {
+                Button(onClick = {/* TODO */}) {
+                    Text(text = "Click me!")
+                }
+            }
+            /* More content */
+            Footer(Color.Red, "Jetpack Compose")
+        }
+    }
+}
